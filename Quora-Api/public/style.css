@@ -1,0 +1,15 @@
+body{
+    margin-left: 20px;
+}
+
+.post{
+    background-color: cornsilk;
+    padding: 10px;
+    margin: 8px;
+    border: 1px solid black;
+}
+
+.user{
+    font-style: italic;
+    color: brown;
+}

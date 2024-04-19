@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title><%= post.username %></title>
+</head>
+<body>
+    <h2>Here is your post in details</h2>
+    <p>Post Id : <%= post.id %></p>
+    <div class="post">
+        <h3 class="user">@<%= post.username %> </h3>
+        <h4 class="content"> <%= post.content %> </h4>
+    </div>
+
+    <br><br><br>
+
+
+    <a style="text-decoration: none; background-color: brown; color: wheat; border-radius: 8px; padding: 5px 8px;" href="http://localhost:8080/posts">Go back to posts</a>
+</body> 
+</html>
