@@ -40,6 +40,16 @@ If you want to contribute to this project, feel free to submit pull requests wit
     ```bash
     cd paytm
     ```
+3. Get a MongoDB URI and replace it in the `backend/db.js` file:
+    ```javascript
+    mongoose.connect(`mongodb://<username>:<password>@<host>:<port>/<database>`);
+    ```
+4. First once run `db.js` file to create database and collection.
+    ```bash
+    node db.js
+    ```
+
+5. Install the required dependencies for the backend and frontend:
 
 ### Backend Setup
 
