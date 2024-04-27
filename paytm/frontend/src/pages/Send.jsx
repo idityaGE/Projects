@@ -10,7 +10,6 @@ export const Send = () => {
     const id = searchParams.get("id");
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
-    const [balance, setBalance] = useState(0);
     const ref = useRef(null);
     
 
