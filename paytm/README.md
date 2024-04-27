@@ -30,3 +30,49 @@ This project is a simplified version of Paytm, where users can sign up, sign in,
 
 If you want to contribute to this project, feel free to submit pull requests with your enhancements or bug fixes. Here are the steps to set up the project locally:
 
+## Installation Guide
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/idityaGE/Projects.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd Projects/paytm
+    ```
+
+### Backend Setup
+
+1. Navigate to the backend folder:
+    ```
+    cd backend
+    ```
+
+2. Install the required dependencies:
+    ```
+    npm install
+    ```
+
+3. Start the backend server:
+    ```
+    node index.js
+    ```
+
+### Frontend Setup
+
+1. Navigate to the frontend folder:
+    ```
+    cd frontend
+    ```
+
+2. Install the required dependencies:
+    ```
+    npm install
+    ```
+
+3. Start the frontend project:
+    ```
+    npm run dev
+    ```
+
+Now you can access the Paytm project locally by opening your web browser and visiting the appropriate URL.
