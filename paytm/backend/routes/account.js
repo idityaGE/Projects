@@ -25,8 +25,8 @@ accountRouter.post('/transfer', authMiddleware, async (req, res) => {
         return res.status(400).json({ error: "Invalid Inputs" });
     }
 
-    const fromAccount = await Account.findOne({ userId }, { session: sesssion });
-    const toAccount = await Account.findOne({ userId: to }, { session: sesssion });
+    const fromAccount = await Account.findOne({ userId }).session(sesssion);
+    const toAccount = await Account.findOne({ userId: to }).session(sesssion);
 
     if (!fromAccount || !toAccount) {
         return res.status(404).json({ error: "Account not found" });
@@ -36,8 +36,8 @@ accountRouter.post('/transfer', authMiddleware, async (req, res) => {
         return res.status(400).json({ error: "Insufficient Balance" });
     }
 
-    await Account.updateOne({ userId }, { $inc: { balance: -amount } }, { session: sesssion });  // Deduct amount from sender's account
-    await Account.updateOne({ userId: to }, { $inc: { balance: amount } }, { session: sesssion }); // Add amount to receiver's account
+    await Account.updateOne({ userId }, { $inc: { balance: -amount } }).session(sesssion);  // Deduct amount from sender's account
+    await Account.updateOne({ userId: to }, { $inc: { balance: amount } }).session(sesssion); // Add amount to receiver's account
 
     await sesssion.commitTransaction();    // Commit the transaction
 
