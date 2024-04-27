@@ -38,7 +38,7 @@ If you want to contribute to this project, feel free to submit pull requests wit
     ```
 2. Navigate to the project directory:
     ```bash
-    cd Projects/paytm
+    cd paytm
     ```
 
 ### Backend Setup
@@ -75,4 +75,4 @@ If you want to contribute to this project, feel free to submit pull requests wit
     npm run dev
     ```
 
-Now you can access the Paytm project locally by opening your web browser and visiting the appropriate URL.
+Once you have set up the project locally, you can start contributing to the project by making changes and submitting pull requests. Make sure to follow the coding standards and guidelines while contributing.
