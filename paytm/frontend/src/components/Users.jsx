@@ -10,11 +10,27 @@ export const Users = () => {
     const [filter, setFilter] = useState("");
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter)
-            .then(response => {
-                setUsers(response.data.user)
-            })
-    }, [filter])
+        let timeoutId;
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter);
+                setUsers(response.data.user);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        const handleSearch = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(fetchData, 500); // Adjust the debounce delay as needed (in milliseconds)
+        };
+
+        handleSearch();
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [filter]);
 
     return <>
         <div className="font-bold mt-6 text-lg">

@@ -1,12 +1,18 @@
 import { useSearchParams } from 'react-router-dom';
 import axios from "axios";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 export const Send = () => {
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const id = searchParams.get("id");
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
+    const [balance, setBalance] = useState(0);
+    const ref = useRef(null);
+    
 
     return <div class="flex justify-center h-screen bg-gray-100">
         <div className="h-full flex flex-col justify-center">
@@ -39,6 +45,7 @@ export const Send = () => {
                                 class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                                 id="amount"
                                 placeholder="Enter amount"
+                                ref={ref}
                             />
                         </div>
                         <button onClick={() => {
@@ -50,8 +57,16 @@ export const Send = () => {
                                     Authorization: "Bearer " + localStorage.getItem("token")
                                 }
                             })
-                        }} class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
+                            ref.current.value = "";
+                        }
+                        } class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                             Initiate Transfer
+                        </button>
+                        <button onClick={() => {
+                            navigate("/dashboard")
+                        }}
+                            class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
+                            Dashboard
                         </button>
                     </div>
                 </div>
