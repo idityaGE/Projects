@@ -48,67 +48,64 @@ userRouter.post('/signup', async (req, res) => {
             firstName,
             lastName,
         });
+        const userId = newUser._id;
         await Account.create({
-            userId: newUser._id,
+            userId,
             balance: 1 + Math.floor(Math.random() * 10000), // Random balance between 1 and 10000
+        });
+        const token = jwt.sign({
+            userId,
+        }, JWT_SECRET, { expiresIn: '1h' })
+
+        res.status(201).json({
+            token,
+            user: {
+                username: newUser.username,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+            },
+            message: "User created successfully",
         });
     } catch (error) {
         res.status(500).json({ error: "Unable to create user" });
     }
-
-
-    const token = jwt.sign({
-        userId: newUser._id,
-    }, JWT_SECRET, { expiresIn: '1h' })
-
-    res.status(201).json({
-        token,
-        user: {
-            username: newUser.username,
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-        },
-        message: "User created successfully",
-    });
 })
 
 // Sign In Route
 userRouter.post('/signin', async (req, res) => {
-    const { username, password } = req.body;
-
     try {
+        const { username, password } = req.body;
         const existingUser = await User.findOne({ username })
         const isMatch = await bcrypt.compare(password, existingUser.password_hash); // Match --> true, Not Match --> false
         if (!existingUser || !isMatch) {
             return res.status(400).json({ error: "Invalid Credentials / Invalid Password" });
         }
+        const token = jwt.sign({
+            userId: existingUser._id,
+        }, JWT_SECRET, { expiresIn: '1h' })
+
+        res.status(200).json({
+            token,
+            user: {
+                username: existingUser.username,
+                firstName: existingUser.firstName,
+                lastName: existingUser.lastName,
+            },
+            message: "User signed in successfully",
+        });
     } catch (error) {
         res.status(500).json({ error: "Unable to compare password" });
     }
-
-    const token = jwt.sign({
-        userId: existingUser._id,
-    }, JWT_SECRET, { expiresIn: '1h' })
-
-    res.status(200).json({
-        token,
-        user: {
-            username: existingUser.username,
-            firstName: existingUser.firstName,
-            lastName: existingUser.lastName,
-        },
-        message: "User signed in successfully",
-    });
 })
 
 // Update User Route
 userRouter.put('/update', authMiddleware, async (req, res) => {
-    const { username, firstName, lastName } = req.body;
-    const { success } = updateUserSchema.safeParse(req.body);
-    if (!success) {
-        return res.status(400).json({ error: "Incorrect Inputs" });
-    }
     try {
+        const { username, firstName, lastName } = req.body;
+        const { success } = updateUserSchema.safeParse(req.body);
+        if (!success) {
+            return res.status(400).json({ error: "Incorrect Inputs" });
+        }
         const user = await User.findOneAndUpdate({ _id: req.userId }, { // req.userId is coming from authMiddleware
             username,
             firstName,
@@ -125,8 +122,6 @@ userRouter.put('/update', authMiddleware, async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: "Unable to update user" });
     }
-
-
 })
 
 // Search User Route
