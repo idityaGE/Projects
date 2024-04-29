@@ -84,7 +84,7 @@ export const Send = () => {
                             new Promise((resolve) => {
                                 setTimeout(() => {
                                     resolve();
-                                }, 1000);
+                                }, 2000);
                             }).then(() => {
                                 setBtnClicked(!btnClicked);
                             });
