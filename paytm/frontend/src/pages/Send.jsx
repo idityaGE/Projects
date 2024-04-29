@@ -13,7 +13,7 @@ export const Send = () => {
     const [amount, setAmount] = useState(0);
     const ref = useRef(null);
     const [balance, setBalance] = useState(0);
-    const [btnClicked, setBtnClicked] = useState(false);
+    const [btnClicked, setBtnClicked] = useState(0);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -80,7 +80,7 @@ export const Send = () => {
                                 }
                             })
                             ref.current.value = "";
-                            setBtnClicked(!btnClicked);
+                            setBtnClicked(p => p + 1);
                         }}
                         class="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                             Initiate Transfer
