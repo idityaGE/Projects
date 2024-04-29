@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { Balance } from '../components/Balance';
-import useSWR from 'swr';
 
 
 export const Send = () => {
