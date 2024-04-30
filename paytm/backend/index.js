@@ -1,7 +1,6 @@
 import express from 'express';
 import apiRouter from './routes/index.js';
 import cors from 'cors';
-import jwt from 'jsonwebtoken';
 
 const app = express();
 const port = 3000;
