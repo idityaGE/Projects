@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { JWT_SECRET } from '../../../backend/config'
+import { verify } from 'jsonwebtoken'
 
 const Home = () => {
   const navigate = useNavigate()
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      navigate('/dashboard')
-    } else {
-      navigate('/signin')
+    const token = localStorage.getItem('token')
+    if (!token) {
+      navigate('/signup')
+      return
     }
+    navigate('/dashboard')
   }, [navigate])
+
   return (
     <div>
       <h1>Home</h1>
