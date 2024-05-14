@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { JWT_SECRET } from '../../../backend/config'
-import jwt from 'jsonwebtoken'
 
 const Home = () => {
   const navigate = useNavigate()
