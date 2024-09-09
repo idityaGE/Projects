@@ -35,8 +35,9 @@ export function ContactForm() {
 
   const onSubmit = (data: FormValues) => {
     send(data)
+    form.reset()
+    alert("Thank you for your message. We'll get back to you as soon as possible.")
   }
-
 
   return (
     <Card className="mx-auto max-w-md">

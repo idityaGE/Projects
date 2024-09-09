@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Contact Us Form
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project is a simple yet effective **Contact Us** form, built using the latest tools and technologies to ensure a seamless user experience and efficient handling of form submissions.
+
+### Tech Stack
+- **Next.js**: A React framework that provides a server-side rendering and static site generation for fast performance.
+- **Shadcn UI**: A highly customizable component library used for building the user interface with consistent design.
+- **V0**: A robust tool that helps in simplifying the setup process of backend services and deployment.
+- **Resend**: A service used to send transactional emails reliably, ensuring form submissions reach the intended recipient without hassle.
+
+## Features
+
+- **Responsive Design**: The form is built using **Shadcn UI**, ensuring a sleek and responsive layout across all devices.
+- **Form Validation**: Integrated validation to ensure correct data entry from the user.
+- **Email Integration**: Using **Resend**, the form submission sends an email directly to the provided email address.
+- **Serverless Backend**: **Next.js API routes** handle the backend logic for form submissions.
+
+## Project Structure
+
+```
+/components
+    - ContactForm.tsx
+/pages
+    - api
+        - sendEmail.ts
+    - contact.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Contact-form.tsx**: This file contains the form UI, designed using Shadcn UI components.
+2. **email.ts**: This API route handles the logic for processing the form data and sending the email using Resend.
+3. **page.tsx**: This is the main page that renders the contact form and handles client-side logic.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setting Up the Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/idityaGE/Projects.git
+   cd contact-form
+   ```
 
-## Learn More
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Set up **Resend** by creating an account and getting your API key. Then, add your API key in a `.env` file:
+   ```bash
+   RESEND_API_KEY=your-resend-api-key
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the project locally:
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Future Improvements
 
-## Deploy on Vercel
+- Add **reCAPTCHA** for spam prevention.
+- Handle form submission status (e.g., success or failure messages) on the UI.
+- Implement **loading states** during email submission.
+- Add **testing** to ensure all functionalities work as expected.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Conclusion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project demonstrates how to build a functional and responsive contact form using **Next.js**, **Shadcn UI**, **V0**, and **Resend**. It can be easily expanded with additional features such as email validation, spam protection, and more.
+
+You can update the code snippets and project structure as per your implementation details.
