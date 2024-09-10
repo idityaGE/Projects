@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form"
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -28,7 +29,7 @@ export function ContactForm() {
     defaultValues: {
       firstname: "",
       lastname: "",
-      email: "",
+      email: "adityasingh6574@gmail.com",
       message: "",
     }
   })
@@ -88,9 +89,12 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="mail@mail.com" {...field} />
+                      <Input disabled placeholder="mail@mail.com" {...field} value="adityasingh6574@gmail.com" />
                     </FormControl>
                     <FormMessage />
+                    <FormDescription>
+                      This is the email where your message will be sent.
+                    </FormDescription>
                   </FormItem>
                 )}
               />
