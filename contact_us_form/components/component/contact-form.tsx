@@ -29,7 +29,7 @@ export function ContactForm() {
     defaultValues: {
       firstname: "",
       lastname: "",
-      email: "adityasingh6574@gmail.com",
+      email: "",
       message: "",
     }
   })
@@ -44,7 +44,7 @@ export function ContactForm() {
     <Card className="mx-auto max-w-md">
       <CardHeader>
         <CardTitle>Get in Touch</CardTitle>
-        <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+        <CardDescription>Fill out the form below and we will get back to you as soon as possible.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -58,7 +58,7 @@ export function ContactForm() {
                     <FormItem>
                       <FormLabel>First Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Aditya" {...field} />
+                        <Input placeholder="first name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -73,7 +73,7 @@ export function ContactForm() {
                     <FormItem>
                       <FormLabel>Last Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Maurya" {...field} />
+                        <Input placeholder="last name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -89,7 +89,7 @@ export function ContactForm() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input disabled placeholder="mail@mail.com" {...field} value="adityasingh6574@gmail.com" />
+                      <Input placeholder="mail@mail.com" {...field} />
                     </FormControl>
                     <FormMessage />
                     <FormDescription>

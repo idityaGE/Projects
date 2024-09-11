@@ -11,7 +11,7 @@ export const send = async (emailFormData: FormValues) => {
     // TODO: "Add this emailFormData to your database with time stamp"
     const { error } = await resend.emails.send({
       from: `Acme <${process.env.RESEND_EMAIL}>`,
-      to: [emailFormData.email],
+      to: ['adityasingh6574@gmail.com'],
       subject: 'Welcome',
       react: EmailTemplate({
         firstname: emailFormData.firstname,
